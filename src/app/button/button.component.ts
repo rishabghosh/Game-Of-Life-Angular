@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
+import { EventEmitter } from "protractor";
 
 @Component({
   selector: "app-button",
@@ -7,6 +8,9 @@ import { Component, OnInit } from "@angular/core";
 })
 export class ButtonComponent implements OnInit {
   active: boolean = false;
+  enable: boolean = true;
+
+  @Input() hasStarted: boolean;
 
   constructor() {}
 
@@ -18,5 +22,9 @@ export class ButtonComponent implements OnInit {
 
   getBackground() {
     return this.active ? "black" : "lightgray";
+  }
+
+  receive($event) {
+    console.log($event);
   }
 }

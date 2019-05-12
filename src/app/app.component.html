@@ -1,7 +1,9 @@
 <div>
-  <app-row></app-row>
-  <app-row></app-row>
-  <app-row></app-row>
-  <app-row></app-row>
-  <app-row></app-row>
+  <app-row [hasStarted]="hasStarted"></app-row>
+  <app-row [hasStarted]="hasStarted"></app-row>
+  <app-row [hasStarted]="hasStarted"></app-row>
+  <app-row [hasStarted]="hasStarted"></app-row>
+  <app-row [hasStarted]="hasStarted"></app-row>
+
+  <button (click)="start()">start</button>
 </div>
