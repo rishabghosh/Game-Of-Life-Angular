@@ -1,9 +1,4 @@
 <div>
-  <app-row [hasStarted]="hasStarted"></app-row>
-  <app-row [hasStarted]="hasStarted"></app-row>
-  <app-row [hasStarted]="hasStarted"></app-row>
-  <app-row [hasStarted]="hasStarted"></app-row>
-  <app-row [hasStarted]="hasStarted"></app-row>
-
-  <button (click)="start()">start</button>
+  <app-row *ngFor="let r of range;let y=index" [hasStarted]="hasStarted" [y]="y"></app-row>
+  <button (click)="start()" (sendCoordinate)="checkCoordinate($event)">start</button>
 </div>

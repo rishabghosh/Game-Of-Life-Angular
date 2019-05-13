@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { EventEmitter } from "protractor";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
   selector: "app-button",
@@ -11,6 +10,10 @@ export class ButtonComponent implements OnInit {
   enable: boolean = true;
 
   @Input() hasStarted: boolean;
+  @Input() x: number;
+  @Input() y: number;
+
+  @Output() sendCoordinate = new EventEmitter();
 
   constructor() {}
 
@@ -18,13 +21,15 @@ export class ButtonComponent implements OnInit {
 
   onClick() {
     this.active = !this.active;
+    console.log(this.x, this.y);
+    this.sendCoordinate.emit(`${this.x} ${this.y}`);
   }
+
+  _sendData() {}
 
   getBackground() {
     return this.active ? "black" : "lightgray";
   }
 
-  receive($event) {
-    console.log($event);
-  }
+  
 }

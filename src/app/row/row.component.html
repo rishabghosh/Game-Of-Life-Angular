@@ -1,8 +1,3 @@
 <div>
- <app-button [hasStarted]="hasStarted"></app-button>
- <app-button [hasStarted]="hasStarted"></app-button>
- <app-button [hasStarted]="hasStarted"></app-button>
- <app-button [hasStarted]="hasStarted"></app-button>
- <app-button [hasStarted]="hasStarted"></app-button>
-
+    <app-button *ngFor="let r of range; let x = index" [hasStarted]="hasStarted" [x]="x" [y]="y"></app-button>
 </div>
