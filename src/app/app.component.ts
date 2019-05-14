@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import nextGeneraton from "../golLib";
 
 @Component({
   selector: "app-root",
@@ -10,22 +11,37 @@ export class AppComponent {
   hasStarted: boolean = false;
   coordinate: string;
   range = new Array(5).fill("*");
-  initialGen = [];
+  initialGenIds = [];
+  currentGenIds = [];
 
   constructor() {}
 
   onClick(event) {
     const cellId = event.target.id;
-    if (this.initialGen.includes(cellId)) {
-      const index = this.initialGen.indexOf(cellId);
-      this.initialGen.splice(index, 1);
+    if (this.initialGenIds.includes(cellId)) {
+      const index = this.initialGenIds.indexOf(cellId);
+      this.initialGenIds.splice(index, 1);
       return;
     }
-    this.initialGen.push(cellId);
+    this.initialGenIds.push(cellId);
+  }
+
+  convertToCellCoord(ids) {
+    return ids.map(id => id.split("_"));
+  }
+
+  convertToCellId(coords) {
+    return coords.map(coord => coord.join("_"));
   }
 
   start() {
     this.hasStarted = true;
-    console.log(this.initialGen);
+
+    this.currentGenIds = [...this.initialGenIds];
+    const bounds = { topLeft: [0, 0], bottomRight: [4, 4] };
+
+    const cellCoords = this.convertToCellCoord(this.currentGenIds);
+    const newGen = nextGeneraton(cellCoords, bounds);
+    this.currentGenIds = this.convertToCellId(newGen);
   }
 }

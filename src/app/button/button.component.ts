@@ -19,8 +19,6 @@ export class ButtonComponent implements OnInit {
 
   onClick() {
     this.active = !this.active;
-    console.log(this.x, this.y);
-    // this.dataService.data.next(this.x + " " + this.y);
   }
 
   getBackground() {
