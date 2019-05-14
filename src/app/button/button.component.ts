@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
   selector: "app-button",
@@ -13,8 +13,6 @@ export class ButtonComponent implements OnInit {
   @Input() x: number;
   @Input() y: number;
 
-  @Output() sendCoordinate = new EventEmitter();
-
   constructor() {}
 
   ngOnInit() {}
@@ -22,14 +20,14 @@ export class ButtonComponent implements OnInit {
   onClick() {
     this.active = !this.active;
     console.log(this.x, this.y);
-    this.sendCoordinate.emit(`${this.x} ${this.y}`);
+    // this.dataService.data.next(this.x + " " + this.y);
   }
-
-  _sendData() {}
 
   getBackground() {
     return this.active ? "black" : "lightgray";
   }
 
-  
+  getId() {
+    return `${this.y}_${this.x}`;
+  }
 }
