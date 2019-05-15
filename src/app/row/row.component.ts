@@ -10,7 +10,7 @@ export class RowComponent implements OnInit {
 
   @Input() hasStarted: boolean;
   @Input() y: number;
-  @Input() currentGenIds: string[];
+  @Input() private currentGenIds: string[];
 
   constructor() {}
 

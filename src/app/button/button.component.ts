@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from "@angular/core";
 export class ButtonComponent implements OnInit {
   @Input() hasStarted: boolean;
   @Input() id: string;
-  @Input() active: boolean;
+  @Input() private active: boolean;
 
   constructor() {}
 

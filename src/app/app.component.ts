@@ -9,9 +9,8 @@ import nextGeneraton from "../golLib";
 export class AppComponent {
   title: string = "game-of-life";
   hasStarted: boolean = false;
-  coordinate: string;
   range: string[] = new Array(5).fill("*");
-  initialGenIds: string[] = [];
+  private initialGenIds: string[] = [];
   currentGenIds: string[] = [];
 
   constructor() {}
