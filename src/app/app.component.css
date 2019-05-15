@@ -14,8 +14,8 @@ body {
 }
 
 button {
-  height: 100px;
-  font-size: 50px;
-  width: 200px;
-border: 2px solid gray
+  height: 50px;
+  font-size: 25px;
+  width: 100px;
+  border: 2px solid gray;
 }
