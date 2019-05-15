@@ -1,3 +1,4 @@
 <div>
-    <app-button *ngFor="let r of range; let x = index" [hasStarted]="hasStarted" [x]="x" [y]="y"></app-button>
+    <app-button *ngFor="let r of range; let x = index" [hasStarted]="hasStarted" [x]="x" [y]="y" currGen="{{currGen}}">
+    </app-button>
 </div>

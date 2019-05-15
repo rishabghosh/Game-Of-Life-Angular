@@ -7,10 +7,14 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class RowComponent implements OnInit {
   range = new Array(5).fill("*");
+
   @Input() hasStarted: boolean;
   @Input() y: number;
+  @Input() currGen;
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("+++", this.currGen);
+  }
 }

@@ -40,8 +40,12 @@ export class AppComponent {
     this.currentGenIds = [...this.initialGenIds];
     const bounds = { topLeft: [0, 0], bottomRight: [4, 4] };
 
-    const cellCoords = this.convertToCellCoord(this.currentGenIds);
-    const newGen = nextGeneraton(cellCoords, bounds);
-    this.currentGenIds = this.convertToCellId(newGen);
+    setInterval(() => {
+      const cellCoords = this.convertToCellCoord(this.currentGenIds);
+      const newGen = nextGeneraton(cellCoords, bounds);
+      this.currentGenIds = this.convertToCellId(newGen);
+      console.log(this.currentGenIds);
+      
+    }, 1000);
   }
 }
