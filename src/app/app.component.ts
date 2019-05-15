@@ -7,7 +7,7 @@ import nextGeneraton from "../golLib";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  private bounds = { topLeft: [0, 0], bottomRight: [5, 4] };
+  private bounds = { topLeft: [0, 0], bottomRight: [10, 10] };
   private id_delim: string = "_";
   private rows: number = this.getRows(this.bounds);
 
