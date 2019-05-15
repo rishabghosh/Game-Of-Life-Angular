@@ -17,4 +17,9 @@ export class RowComponent implements OnInit {
   ngOnInit() {
     console.log("+++", this.currGen);
   }
+
+  isActive(id) {
+    console.log("current gen is", this.currGen);
+    return this.currGen.includes(id);
+  }
 }

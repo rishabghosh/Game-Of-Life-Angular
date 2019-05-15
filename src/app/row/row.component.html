@@ -1,4 +1,5 @@
 <div>
-    <app-button *ngFor="let r of range; let x = index" [hasStarted]="hasStarted" [x]="x" [y]="y" currGen="{{currGen}}">
+    <app-button *ngFor="let r of range; let x = index" [hasStarted]="hasStarted" [id]="y + '_' + x"
+       [active]="isActive(y + '_' + x)" >
     </app-button>
 </div>

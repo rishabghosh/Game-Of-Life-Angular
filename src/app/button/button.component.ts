@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { getCurrentDebugContext } from "@angular/core/src/view/services";
 
 @Component({
   selector: "app-button",
@@ -8,11 +7,10 @@ import { getCurrentDebugContext } from "@angular/core/src/view/services";
 })
 export class ButtonComponent implements OnInit {
   @Input() hasStarted: boolean;
-  @Input() x: number;
-  @Input() y: number;
+  @Input() id: string;
   @Input() currGen;
+  @Input() active: boolean;
 
-  active: boolean = this.isActive();
   enable: boolean = true;
 
   constructor() {}
@@ -24,19 +22,7 @@ export class ButtonComponent implements OnInit {
     this.active = !this.active;
   }
 
-  isActive() {
-    console.log("is active is getting invoked");
-    if (this.hasStarted) {
-      return this.currGen.includes(this.getId());
-    }
-    return false;
-  }
-
   getBackground() {
     return this.active ? "black" : "lightgray";
-  }
-
-  getId() {
-    return `${this.y}_${this.x}`;
   }
 }
