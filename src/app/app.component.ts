@@ -7,13 +7,24 @@ import nextGeneraton from "../golLib";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
+  private bounds = { topLeft: [0, 0], bottomRight: [5, 4] };
   private id_delim: string = "_";
-  title: string = "game-of-life";
+  private rows: number = this.getRows(this.bounds);
+
+  columns: number = this.getColumns(this.bounds);
   hasStarted: boolean = false;
-  range: string[] = new Array(5).fill("*");
+  range: string[] = new Array(this.rows).fill("*");
   currentGenIds: string[] = [];
 
   constructor() {}
+
+  private getColumns({ topLeft, bottomRight }): number {
+    return bottomRight[1] - topLeft[1] + 1;
+  }
+
+  private getRows({ topLeft, bottomRight }): number {
+    return bottomRight[0] - topLeft[0] + 1;
+  }
 
   private addCellId(cellId: string): void {
     this.currentGenIds.push(cellId);
@@ -50,11 +61,9 @@ export class AppComponent {
   start(): void {
     this.hasStarted = true;
 
-    const bounds = { topLeft: [0, 0], bottomRight: [4, 4] };
-
     setInterval(() => {
       const cellCoords = this.convertToCellCoord(this.currentGenIds);
-      const newGen = nextGeneraton(cellCoords, bounds);
+      const newGen = nextGeneraton(cellCoords, this.bounds);
       this.currentGenIds = this.convertToCellId(newGen);
     }, 1000);
   }

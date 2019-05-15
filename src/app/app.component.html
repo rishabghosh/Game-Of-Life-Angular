@@ -1,8 +1,9 @@
 <div (click)="onClick($event)">
   <app-row 
-    *ngFor="let r of range; let rows = index"
+    *ngFor="let r of range; let rowNumber = index"
     [hasStarted]="hasStarted"
-    [rows]="rows"
+    [rowNumber]="rowNumber"
+    [columns]="columns"
     [currentGenIds]="currentGenIds"
   ></app-row>
 
