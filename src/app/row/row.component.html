@@ -1,8 +1,8 @@
 <div>
   <app-button 
-    *ngFor="let r of range; let x = index" 
+    *ngFor="let r of range; let columns = index" 
     [hasStarted]="hasStarted" 
-    [id]="getId(x)"
-    [active]="isActive(getId(x))"
+    [id]="getId(columns)"
+    [active]="isActive(getId(columns))"
   ></app-button>
 </div>

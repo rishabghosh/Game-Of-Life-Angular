@@ -9,7 +9,7 @@ export class RowComponent implements OnInit {
   range: string[] = new Array(5).fill("*");
 
   @Input() hasStarted: boolean;
-  @Input() y: number;
+  @Input() rows: number;
   @Input() private currentGenIds: string[];
 
   constructor() {}
@@ -20,7 +20,7 @@ export class RowComponent implements OnInit {
     return this.currentGenIds.includes(id);
   }
 
-  getId(x: number): string {
-    return `${this.y}_${x}`;
+  getId(columns: number): string {
+    return `${this.rows}_${columns}`;
   }
 }
