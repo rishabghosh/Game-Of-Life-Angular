@@ -44,8 +44,6 @@ export class AppComponent {
       const cellCoords = this.convertToCellCoord(this.currentGenIds);
       const newGen = nextGeneraton(cellCoords, bounds);
       this.currentGenIds = this.convertToCellId(newGen);
-      console.log(this.currentGenIds);
-      
     }, 1000);
   }
 }

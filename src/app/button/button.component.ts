@@ -8,7 +8,6 @@ import { Component, OnInit, Input } from "@angular/core";
 export class ButtonComponent implements OnInit {
   @Input() hasStarted: boolean;
   @Input() id: string;
-  @Input() currGen;
   @Input() active: boolean;
 
   enable: boolean = true;
@@ -18,7 +17,6 @@ export class ButtonComponent implements OnInit {
   ngOnInit() {}
 
   onClick() {
-    console.log(this.currGen);
     this.active = !this.active;
   }
 

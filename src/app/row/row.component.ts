@@ -14,12 +14,13 @@ export class RowComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-    console.log("+++", this.currGen);
-  }
+  ngOnInit() {}
 
   isActive(id) {
-    console.log("current gen is", this.currGen);
     return this.currGen.includes(id);
+  }
+
+  getId(x) {
+    return `${this.y}_${x}`;
   }
 }

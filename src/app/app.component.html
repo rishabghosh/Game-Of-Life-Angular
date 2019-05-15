@@ -1,5 +1,5 @@
 <div (click)="onClick($event)">
   <app-row *ngFor="let r of range;let y = index" [hasStarted]="hasStarted" [y]="y" [currGen]="currentGenIds">
   </app-row>
-  <button (click)="start()" (sendCoordinate)="checkCoordinate($event)">start</button>
+  <button (click)="start()" (sendCoordinate)="checkCoordinate($event)" [disabled]="hasStarted">start</button>
 </div>
