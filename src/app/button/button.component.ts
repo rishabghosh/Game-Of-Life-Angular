@@ -10,8 +10,6 @@ export class ButtonComponent implements OnInit {
   @Input() id: string;
   @Input() active: boolean;
 
-  enable: boolean = true;
-
   constructor() {}
 
   ngOnInit() {}

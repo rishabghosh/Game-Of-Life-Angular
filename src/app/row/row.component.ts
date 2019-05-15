@@ -6,21 +6,21 @@ import { Component, OnInit, Input } from "@angular/core";
   styleUrls: ["./row.component.css"]
 })
 export class RowComponent implements OnInit {
-  range = new Array(5).fill("*");
+  range: string[] = new Array(5).fill("*");
 
   @Input() hasStarted: boolean;
   @Input() y: number;
-  @Input() currGen;
+  @Input() currentGenIds: string[];
 
   constructor() {}
 
   ngOnInit() {}
 
-  isActive(id) {
-    return this.currGen.includes(id);
+  isActive(id: string): boolean {
+    return this.currentGenIds.includes(id);
   }
 
-  getId(x) {
+  getId(x: number): string {
     return `${this.y}_${x}`;
   }
 }
