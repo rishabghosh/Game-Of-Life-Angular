@@ -11,6 +11,9 @@ body {
 }
 
 .button-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 button {
