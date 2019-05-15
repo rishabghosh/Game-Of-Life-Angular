@@ -15,6 +15,7 @@ export class AppComponent {
   hasStarted: boolean = false;
   range: string[] = new Array(this.rows).fill("*");
   currentGenIds: string[] = [];
+  intervalId;
 
   constructor() {}
 
@@ -61,10 +62,16 @@ export class AppComponent {
   start(): void {
     this.hasStarted = true;
 
-    setInterval(() => {
+    this.intervalId = setInterval(() => {
       const cellCoords = this.convertToCellCoord(this.currentGenIds);
       const newGen = nextGeneraton(cellCoords, this.bounds);
       this.currentGenIds = this.convertToCellId(newGen);
     }, 500);
+  }
+
+  reset(): void {
+    clearInterval(this.intervalId);
+    this.currentGenIds = [];
+    this.hasStarted = false;
   }
 }
