@@ -1,16 +1,17 @@
 <div class="main">
-  <div (click)="onClick($event)">
-    <app-row *ngFor="let r of range; let rowNumber = index" [hasStarted]="hasStarted" [rowNumber]="rowNumber"
-      [columns]="columns" [currentGenIds]="currentGenIds"></app-row>
-  </div>
+  <div class="viewport" (click)="onClick($event)">
 
-  <div class="button-wrapper">
-    <div>
-      <button (click)="start()" [disabled]="hasStarted">Start</button>
+    <div class="grid">
+      <app-row *ngFor="let r of range; let rowNumber = index" [hasStarted]="hasStarted" [rowNumber]="rowNumber"
+        [columns]="columns" [currentGenIds]="currentGenIds">
+      </app-row>
     </div>
-    <div>
-      <button (click)="reset()">Reset</button>
-    </div>
-  </div>
 
+
+    <div class="button-wrapper">
+      <button (click)="start()" [disabled]="hasStarted" id="start-btn">Start</button>
+      <button (click)="reset()" id="reset-btn">Reset</button>
+    </div>
+
+  </div>
 </div>
