@@ -1,10 +1,11 @@
+
 <div class="main">
   <h1>Game Of Life</h1>
   <div class="viewport" (click)="onClick($event)">
 
     <div class="grid">
-      <app-row *ngFor="let r of range; let rowNumber = index" [hasStarted]="hasStarted" [rowNumber]="rowNumber"
-        [columns]="columns" [currentGenIds]="currentGenIds">
+      <app-row *ngFor="let r of range; let rowNumber = index" [hasStarted]="getHasStarted()" [rowNumber]="getRowNumber()"
+        [columns]="getColumns()" [currentGenIds]="getCurrentGenIds()">
       </app-row>
     </div>
 

@@ -88,7 +88,7 @@ export class AppComponent {
 
   start(window: Window): void {
     this.hasStarted = true;
-    const bounds: Object = this.calculateBounds();
+  const bounds: Object = this.calculateBounds();
 
     this.intervalId = window.setInterval(() => {
       this.updateCurrGen(bounds);
