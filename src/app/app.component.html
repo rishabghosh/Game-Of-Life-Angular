@@ -1,4 +1,3 @@
-
 <div class="main">
   <h1>Game Of Life</h1>
   <div class="viewport" (click)="onClick($event)">
@@ -11,7 +10,7 @@
 
 
     <div class="button-wrapper">
-      <button (click)="start()" [disabled]="hasStarted" id="start-btn">Start</button>
+      <button (click)="start(getWindow())" [disabled]="hasStarted" id="start-btn">Start</button>
       <button (click)="reset()" id="reset-btn">Reset</button>
     </div>
 

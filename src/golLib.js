@@ -188,7 +188,6 @@ const nextGeneration = function(currGeneration, bounds) {
     validateInput(bounds, currGeneration)
   );
   result = runIteration(result);
-  console.log("reslult is", result);
   return validateOutput(bounds, getCoordOfAliveCells(result));
 };
 

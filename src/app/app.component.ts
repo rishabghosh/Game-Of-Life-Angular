@@ -7,24 +7,27 @@ import nextGeneraton from "../golLib";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  private bounds = { topLeft: [0, 0], bottomRight: [10, 10] };
-  private id_delim: string = "_";
-  private rows: number = this.getRows(this.bounds);
+  private rows: number = 10;
+  private columns: number = 10;
+  private idDelim: string = "_";
+  private range: string[] = new Array(this.rows).fill("*");
 
-  columns: number = this.getColumns(this.bounds);
-  hasStarted: boolean = false;
-  range: string[] = new Array(this.rows).fill("*");
-  currentGenIds: string[] = [];
-  intervalId;
+  private intervalId: number;
+  private hasStarted: boolean = false;
+  private currentGenIds: string[] = [];
 
   constructor() {}
 
-  private getColumns({ topLeft, bottomRight }): number {
-    return bottomRight[1] - topLeft[1] + 1;
+  /* =============== Privates ================ */
+
+  private updateCurrGen(bounds: Object) {
+    const cellCoords: number[][] = this.convertToCellCoord(this.currentGenIds);
+    const newGen: number[][] = nextGeneraton(cellCoords, bounds);
+    this.currentGenIds = this.convertToCellId(newGen);
   }
 
-  private getRows({ topLeft, bottomRight }): number {
-    return bottomRight[0] - topLeft[0] + 1;
+  private calculateBounds(): Object {
+    return { topLeft: [0, 0], bottomRight: [this.rows, this.columns] };
   }
 
   private addCellId(cellId: string): void {
@@ -41,12 +44,36 @@ export class AppComponent {
   }
 
   private convertToCellCoord(ids: string[]): number[][] {
-    return ids.map(id => this.toNumber(id.split(this.id_delim)));
+    return ids.map(id => this.toNumber(id.split(this.idDelim)));
   }
 
   private convertToCellId(coords: number[][]): string[] {
-    return coords.map(coord => coord.join(this.id_delim));
+    return coords.map(coord => coord.join(this.idDelim));
   }
+
+  /* =============== Getters =============== */
+
+  getWindow(): Window {
+    return window;
+  }
+
+  getColumns(): number {
+    return this.columns;
+  }
+
+  getHasStarted(): boolean {
+    return this.hasStarted;
+  }
+
+  getRange(): string[] {
+    return [...this.range];
+  }
+
+  getCurrentGenIds(): string[] {
+    return [...this.currentGenIds];
+  }
+
+  /* =============== Publics =============== */
 
   onClick(event: Event): void {
     //explicitely mentioning the type by casting it to html input element
@@ -59,13 +86,12 @@ export class AppComponent {
     this.addCellId(cellId);
   }
 
-  start(): void {
+  start(window: Window): void {
     this.hasStarted = true;
+    const bounds: Object = this.calculateBounds();
 
-    this.intervalId = setInterval(() => {
-      const cellCoords = this.convertToCellCoord(this.currentGenIds);
-      const newGen = nextGeneraton(cellCoords, this.bounds);
-      this.currentGenIds = this.convertToCellId(newGen);
+    this.intervalId = window.setInterval(() => {
+      this.updateCurrGen(bounds);
     }, 500);
   }
 
